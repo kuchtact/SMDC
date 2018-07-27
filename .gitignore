@@ -1,2 +1,5 @@
 #data files
 *.h5
+
+#ide files
+.idea/*
