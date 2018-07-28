@@ -7,6 +7,7 @@ import paths
 
 def main():
     f = h5py.File(paths._datapath)
+    print(f)
     f = f['entry1']['data']
     dat = f['signal']
     for i in range(0, 20, 2):
@@ -24,7 +25,7 @@ def show(data, z_slice=0):
     data = np.nan_to_num(data)
 
     plt.imshow(data)
-    plt.savefig('/Users/cameronkuchta/PycharmProjects/SMDC/images/slice_' + str(z_slice))
+    plt.savefig('C:\\Users\\pthy1\\OneDrive\\Documents\\GitHub\\SMDC\\images\\slice_' + str(z_slice))
 
 def make_gif():
     images = []

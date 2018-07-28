@@ -1,1 +1,1 @@
-_datapath = '/Users/cameronkuchta/PycharmProjects/SMDC/Sr14Cu24O41.h5'
+_datapath = 'C:\\Users\\pthy1\\OneDrive\\Documents\\GitHub\\SMDC\\Sr14Cu24O41.h5'
