@@ -6,8 +6,8 @@ import os
 import paths
 
 def main():
-    f = h5py.File(paths._datapath)
-    f = f['entry1']['data']
+    file = h5py.File(paths._datapath)
+    f = file['entry1']['data']
     dat = f['signal']
     for i in range(0, 20, 2):
         show(dat, z_slice=i)
@@ -24,13 +24,14 @@ def show(data, z_slice=0):
     data = np.nan_to_num(data)
 
     plt.imshow(data)
-    plt.savefig('/Users/cameronkuchta/PycharmProjects/SMDC/images/slice_' + str(z_slice))
+    exit()
+    plt.savefig(paths._projectpath + str(z_slice))
 
-def make_gif():
-    images = []
-    for filename in filenames:
-        images.append(imageio.imread(filename))
-    imageio.mimsave('/path/to/movie.gif', images)
+# def make_gif():
+#     images = []
+#     for filename in filenames:
+#         images.append(imageio.imread(filename))
+#     imageio.mimsave('/path/to/movie.gif', images)
 
 
 if __name__ == '__main__':
