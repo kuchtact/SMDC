@@ -3,3 +3,9 @@
 
 #ide files
 .idea/*
+
+#paths
+*paths.py
+
+#python files
+/**/__pycache__/
