@@ -1,11 +1,11 @@
 import h5py
 import paths
 
-def load():
+def load_dataset():
     file = h5py.File(paths._datapath)
     f = file['entry1']['data']
     dat = f['signal']
     return dat
 
-if __name__ == '__main__':
-    tom = load()
+def load_array():
+    return load_dataset()[()]

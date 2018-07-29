@@ -10,6 +10,6 @@ def create_hist(array):
     plt.show()
 
 if __name__ == '__main__':
-    arr = load_data.load()[()]
+    arr = load_data.load_dataset()[()]
     arr = np.nan_to_num(arr)
     create_hist(arr)

@@ -9,3 +9,6 @@
 
 #python files
 /**/__pycache__/
+
+#images
+/images/*.png
