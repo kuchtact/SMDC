@@ -53,11 +53,18 @@ def symmetries(data):
         large_results = proc.starmap_async(are_symmetric, args)
 
         # Choose position closest to enter if there happen to be multiple
+        shortest_dist = -1
+        for res in large_results:
+            if shortest_dist == -1:
+                shortest_dist = res
+            dist = abs(shortest_dist - data.shape[axis]/2.)
+            if abs(res - data.shape[0]/2.) < dist:
+                shortest_dist = res
 
-
-                print("Found symmetry along " + direction + " axis")
-                syms[axis] = res
-                break
+        if shortest_dist != -1:
+            print("Found symmetry along " + direction + " axis")
+            syms[axis] = res
+            break
         else:
             print("No symmetry found along " + direction + " axis")
 
@@ -127,7 +134,11 @@ def are_symmetric(points, data, inversion, position, percentage_same=0.9):
             dist = inv[i] * (point[i] - position)
             newpoint[i] = point[i] - 2 * dist
         point_val = data[point[0], point[1], point[2]]
-        newpoint_val = data[newpoint[0], newpoint[1], newpoint[2]]
+        try:
+            newpoint_val = data[newpoint[0], newpoint[1], newpoint[2]]
+        except IndexError:
+            return position
+
         if semi_equal(point_val, newpoint_val):
             num_symmetric += 1
 
