@@ -2,6 +2,9 @@ import numpy as np
 import math
 from multiprocessing.pool import Pool
 
+"""
+This class is used for classifying broad features.
+"""
 
 def gdbscan(data, radius, minPts, minVal):
     cores = get_cores(data, radius, minPts, minVal)
@@ -69,7 +72,7 @@ def get_cores(data, radius, minPts, minVal, num_workers=32):
     for i in range(2*radius + 1):
         for j in range(2*radius + 1):
             for k in range(2*radius + 1):
-                args.append(data, tiled, radius, minPts, minVal, [i, j, k])
+                args.append((data, tiled, radius, minPts, minVal, [i, j, k]))
 
     results = proc.starmap_async(offset_cores, args)
     cores = np.zeros(data.shape)
